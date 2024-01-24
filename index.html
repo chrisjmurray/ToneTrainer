@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tone Trainer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js" integrity="sha512-jduERlz7En1IUZR54bqzpNI64AbffZWR//KJgF71SJ8D8/liKFZ+s1RxmUmB+bhCnIfzebdZsULwOrbVB5f3nQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
+    <script src="piano.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="piano-container"></div>
+    <form>
+        <fieldset>
+            <legend>
+                Player Controls
+            </legend>
+            <button id="btn-start" type="button">Start</button>
+            <button id="btn-stop" type="button">Stop</button>
+            <span>  Tempo</span>
+            <input id="input-tempo" type="number" min="40" max="300" value="120">
+        </fieldset>
+        <fieldset>
+            <legend>
+                Range Controls
+            </legend>
+            <span>Root Note</span>
+            <select id="root-note">
+                <option selected value="12">Random</option>
+                <option value="0">C</option>
+                <option value="1">Db</option>
+                <option value="2">D</option>
+                <option value="3">Eb</option>
+                <option value="4">E</option>
+                <option value="5">F</option>
+                <option value="6">Gb</option>
+                <option value="7">G</option>
+                <option value="8">Ab</option>
+                <option value="9">A</option>
+                <option value="10">Bb</option>
+                <option value="11">B</option>
+            </select>
+            <span>Note Range</span>
+            <select id="range-end-1">
+                <option>A0</option>
+                <option>Bb0</option>
+                <option>B0</option>
+                <option>C1</option>
+                <option>Db1</option>
+                <option>D1</option>
+                <option>Eb1</option>
+                <option>E1</option>
+                <option>F1</option>
+                <option>Gb1</option>
+                <option>G1</option>
+                <option>Ab1</option>
+                <option>A1</option>
+                <option>Bb1</option>
+                <option>B1</option>
+                <option>C2</option>
+                <option>Db2</option>
+                <option>D2</option>
+                <option>Eb2</option>
+                <option>E2</option>
+                <option>F2</option>
+                <option>Gb2</option>
+                <option>G2</option>
+                <option>Ab2</option>
+                <option>A2</option>
+                <option>Bb2</option>
+                <option>B2</option>
+                <option>C3</option>
+                <option>Db3</option>
+                <option>D3</option>
+                <option>Eb3</option>
+                <option>E3</option>
+                <option>F3</option>
+                <option>Gb3</option>
+                <option>G3</option>
+                <option>Ab3</option>
+                <option>A3</option>
+                <option>Bb3</option>
+                <option>B3</option>
+                <option selected>C4</option>
+                <option>Db4</option>
+                <option>D4</option>
+                <option>Eb4</option>
+                <option>E4</option>
+                <option>F4</option>
+                <option>Gb4</option>
+                <option>G4</option>
+                <option>Ab4</option>
+                <option>A4</option>
+                <option>Bb4</option>
+                <option>B4</option>
+                <option>C5</option>
+                <option>Db5</option>
+                <option>D5</option>
+                <option>Eb5</option>
+                <option>E5</option>
+                <option>F5</option>
+                <option>Gb5</option>
+                <option>G5</option>
+                <option>Ab5</option>
+                <option>A5</option>
+                <option>Bb5</option>
+                <option>B5</option>
+                <option>C6</option>
+                <option>Db6</option>
+                <option>D6</option>
+                <option>Eb6</option>
+                <option>E6</option>
+                <option>F6</option>
+                <option>Gb6</option>
+                <option>G6</option>
+                <option>Ab6</option>
+                <option>A6</option>
+                <option>Bb6</option>
+                <option>B6</option>
+                <option>C7</option>
+                <option>Db7</option>
+                <option>D7</option>
+                <option>Eb7</option>
+                <option>E7</option>
+                <option>F7</option>
+                <option>Gb7</option>
+                <option>G7</option>
+                <option>Ab7</option>
+                <option>A7</option>
+                <option>Bb7</option>
+                <option>B7</option>
+                <option>C8</option>
+            </select>
+            to
+            <select id="range-end-2">
+                <option>A0</option>
+                <option>Bb0</option>
+                <option>B0</option>
+                <option>C1</option>
+                <option>Db1</option>
+                <option>D1</option>
+                <option>Eb1</option>
+                <option>E1</option>
+                <option>F1</option>
+                <option>Gb1</option>
+                <option>G1</option>
+                <option>Ab1</option>
+                <option>A1</option>
+                <option>Bb1</option>
+                <option>B1</option>
+                <option>C2</option>
+                <option>Db2</option>
+                <option>D2</option>
+                <option>Eb2</option>
+                <option>E2</option>
+                <option>F2</option>
+                <option>Gb2</option>
+                <option>G2</option>
+                <option>Ab2</option>
+                <option>A2</option>
+                <option>Bb2</option>
+                <option>B2</option>
+                <option>C3</option>
+                <option>Db3</option>
+                <option>D3</option>
+                <option>Eb3</option>
+                <option>E3</option>
+                <option>F3</option>
+                <option>Gb3</option>
+                <option>G3</option>
+                <option>Ab3</option>
+                <option>A3</option>
+                <option>Bb3</option>
+                <option>B3</option>
+                <option>C4</option>
+                <option>Db4</option>
+                <option>D4</option>
+                <option>Eb4</option>
+                <option>E4</option>
+                <option>F4</option>
+                <option>Gb4</option>
+                <option>G4</option>
+                <option>Ab4</option>
+                <option>A4</option>
+                <option>Bb4</option>
+                <option>B4</option>
+                <option selected>C5</option>
+                <option>Db5</option>
+                <option>D5</option>
+                <option>Eb5</option>
+                <option>E5</option>
+                <option>F5</option>
+                <option>Gb5</option>
+                <option>G5</option>
+                <option>Ab5</option>
+                <option>A5</option>
+                <option>Bb5</option>
+                <option>B5</option>
+                <option>C6</option>
+                <option>Db6</option>
+                <option>D6</option>
+                <option>Eb6</option>
+                <option>E6</option>
+                <option>F6</option>
+                <option>Gb6</option>
+                <option>G6</option>
+                <option>Ab6</option>
+                <option>A6</option>
+                <option>Bb6</option>
+                <option>B6</option>
+                <option>C7</option>
+                <option>Db7</option>
+                <option>D7</option>
+                <option>Eb7</option>
+                <option>E7</option>
+                <option>F7</option>
+                <option>Gb7</option>
+                <option>G7</option>
+                <option>Ab7</option>
+                <option>A7</option>
+                <option>Bb7</option>
+                <option>B7</option>
+                <option>C8</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Exercise Selection</legend>
+            <select id="select-exercise">
+                <option selected value="singleTone">Single Tone</option>
+                <option value="closedInterval">Closed Interval</option>
+                <option value="noteRun">Note Run</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Active Degrees</legend>
+            <div id="tone-select-grid">
+                <div id="tone-select-row1">
+                    <label>
+                        <input type="checkbox" id="tone-0" value="0" />
+                        1
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tone-1" value="1" />
+                        b2
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tone-2" value="2" />
+                        2
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tone-3" value="3" />
+                        b3
+                    </label>
+                </div>
+                <div id="tone-select-row2">
+                    <label>
+                        <input type="checkbox" id="tone-4" value="4" />
+                        3
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tone-5" value="5" />
+                        4
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tone-6" value="6" />
+                        b5
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tone-7" value="7" />
+                        5
+                    </label>
+                </div>
+                <div id="tone-select-row3">
+                    <label>
+                        <input type="checkbox" id="tone-8" value="8" />
+                        b6
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tone-9" value="9" />
+                        6
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tone-10" value="10" />
+                        b7
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tone-11" value="11" />
+                        7
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-repo for [cmurray.art](cmurray.art)
+repo for [cmurray.art](www.cmurray.art)
 
 # Basic Idea
 

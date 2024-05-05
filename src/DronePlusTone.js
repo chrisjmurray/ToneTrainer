@@ -86,7 +86,7 @@ export class DronePlusTone {
 
     getRoot(rootNote) {
         let roots = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B']
-        if (rootNote = 'Random') {
+        if (rootNote == 'Random') {
             rootNote = roots[Math.floor(Math.random()*12)]
         }
         return rootNote

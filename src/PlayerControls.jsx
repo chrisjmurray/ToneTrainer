@@ -8,10 +8,7 @@ export function PlayerControls({tempo, setTempo, startDrone, stopDrone}) {
     const handleTempoChange = (event, newValue, activeThumb) => {
         setTempo(newValue)
     }
-
     
-
-
     return (
         <BorderedSection title="Player Controls">
             <Stack

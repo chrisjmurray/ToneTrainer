@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { RandomTones } from './RandomTones'
 import { SteppingTones } from './SteppingTones'
-
+import { Melodies } from './Melodies'
 import './App.css'
 import { ModeSelect } from './ModeSelect'
+import { KeySignatures } from './KeySignatures'
 
 
 function App() {
@@ -30,6 +31,28 @@ function App() {
             handleModeChange={handleModeChange}
           />
         <SteppingTones/>
+      </>
+    )
+  }
+  else if (mode == "Melodies") {
+    return (
+      <>
+        <ModeSelect
+            mode={mode}
+            handleModeChange={handleModeChange}
+          />
+        <Melodies/>
+      </>
+    )
+  }
+  else if (mode == "Key Signatures") {
+    return (
+      <>
+        <ModeSelect
+          mode={mode}
+          handleModeChange={handleModeChange}
+        />
+        <KeySignatures/>
       </>
     )
   }

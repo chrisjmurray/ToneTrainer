@@ -29,6 +29,8 @@ export function ModeSelect({mode, handleModeChange}) {
                     onChange={handleModeChange}>
                         <MenuItem value={"Random Tones"}>Random Tones</MenuItem>
                         <MenuItem value={"Stepping Tones"}>Stepping Tones</MenuItem>
+                        <MenuItem value={"Melodies"}>Melodies</MenuItem>
+                        <MenuItem value={"Key Signatures"}>Key Signatures</MenuItem>
                     </Select>
                 </FormControl>
                 

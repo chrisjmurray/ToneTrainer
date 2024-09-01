@@ -145,6 +145,18 @@ export class DronePlusTone {
         Tone.Transport.start();
     }
 
+    activateDrone(rootnum) {
+        console.log(rootnum)
+        this.dronePlayer = new Tone.Player("./assets/DroneSamples/drone_"+rootnum+".mp3").toDestination();
+        this.dronePlayer.autostart = true;
+        this.dronePlayer.loop = true;
+        Tone.Transport.start()
+    }
+
+    stopDrone() {
+        this.dronePlayer.stop()
+    }
+
     getRandomTones(toneArray, rhythmArr) {
         let melody = []
         for (let i = 0; i < rhythmArr.length; i++){

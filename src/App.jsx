@@ -9,7 +9,7 @@ import { StaffNotes } from './StaffNotes'
 
 
 function App() {
-  const [mode, setMode] = useState("Random Tones")
+  const [mode, setMode] = useState("Staff Notes")
 
   const handleModeChange = (event) => {
     setMode(event.target.value);

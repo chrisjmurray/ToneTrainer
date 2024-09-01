@@ -1,6 +1,6 @@
 import { Stack, Button, Box, TextField } from "@mui/material";
 import { BorderedSection } from "./BorderedSection";
-import { useState, useRef, useEffect, ChangeEvent } from "react"
+import { useState } from "react"
 
 export function KeySignatures() {
     const relative_minors = {

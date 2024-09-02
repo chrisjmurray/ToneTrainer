@@ -1,5 +1,6 @@
 import { Stack, Button, Box, TextField } from "@mui/material";
 import { BorderedSection } from "./BorderedSection";
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { useState } from "react"
 
 export function KeySignatures() {
@@ -13,7 +14,12 @@ export function KeySignatures() {
     const [root, setRoot] = useState("mi")
     const [selectedModes, setSelectedModes] = useState([1,0])
     const [activeMode, setActiveMode] = useState(["Major"])
+    const [showHelp, setShowHelp] = useState(false)
     
+    function handleHelpClick() {
+		setShowHelp(!showHelp)
+	}
+
     function setNewRoot() {
         let new_root = root
         while (new_root == root){
@@ -66,28 +72,48 @@ export function KeySignatures() {
                 </Stack>
             </BorderedSection>
             <BorderedSection>
-                <TextField 
-                    label="Enter root as solfege" 
-                    variant="standard"
-                    onChange={(event)  => {
-                        console.log(root)
-                        console.log(event.target.value)
-                        if (activeMode == "Major") {
-                            if (root == event.target.value) {
-                                setNewRoot()
-                                newActiveMode()
-                                event.target.value = ""
-                            }      
-                        }
-                        if (activeMode == "Minor") {
-                            if (relative_minors[root] == event.target.value) {
-                                setNewRoot()
-                                newActiveMode()
-                                event.target.value = ""
+                <Stack direction='row' justifyContent='space-around'>
+                    <TextField 
+                        label="Enter root as solfege" 
+                        variant="standard"
+                        onChange={(event)  => {
+                            console.log(root)
+                            console.log(event.target.value)
+                            if (activeMode == "Major") {
+                                if (root == event.target.value) {
+                                    setNewRoot()
+                                    newActiveMode()
+                                    event.target.value = ""
+                                }      
                             }
-                        }                
-                    }}
-                ></TextField>
+                            if (activeMode == "Minor") {
+                                if (relative_minors[root] == event.target.value) {
+                                    setNewRoot()
+                                    newActiveMode()
+                                    event.target.value = ""
+                                }
+                            }                
+                        }}
+                    ></TextField>
+                    <HelpOutlineIcon onClick={() => handleHelpClick()} style={{alignSelf: 'center'}}></HelpOutlineIcon>
+                </Stack>
+                {showHelp &&
+                    <Stack
+                    direction="column"
+                    alignItems="center"
+                    >
+                        <Box
+                            component="img"
+                            sx={{
+                                height: 321,
+                                width: 273,
+                                maxHeight: { xs: 321, md: 231 },
+                                maxWidth: { xs: 273, md: 195 },
+                            }}
+                            src={'./assets/solfege-help.png'}
+                        />
+                    </Stack>
+                }
             </BorderedSection>
             <BorderedSection title="Options">
                 <Stack

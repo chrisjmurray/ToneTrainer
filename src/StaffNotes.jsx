@@ -1,7 +1,8 @@
-import { Stack, Button, Box, TextField, Divider } from "@mui/material";
+import { Stack, Button, Box, TextField, Divider, Tooltip } from "@mui/material";
 import { BorderedSection } from "./BorderedSection";
 import { useState, useRef, useEffect } from "react"
 import { DronePlusTone } from "./DronePlusTone"
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import * as Tone from 'tone';
 
 
@@ -149,12 +150,17 @@ export function StaffNotes() {
 	const [activeRanges, setActiveRanges] = useState(["Bass"])
 	const [activeNotes, setActiveNotes] = useState(major_key_notes["F Major"])
 	const [isLoaded, setLoaded] = useState(false)
+	const [showHelp, setShowHelp] = useState(false)
 	const droneAndTone = useRef(null)
 
 	useEffect(() => {
 		droneAndTone.current = new DronePlusTone()
 		droneAndTone.current.loadToneSampler(setLoaded)
 	}, []);
+
+	function handleHelpClick() {
+		setShowHelp(!showHelp)
+	}
 
 	function handleModeClick(i) {
 		let temp = [...selectedModes]
@@ -285,17 +291,40 @@ export function StaffNotes() {
 					</Stack>
 				</BorderedSection>
 				<BorderedSection>
-					<TextField
-						label="Enter note as solfege"
-						variant="standard"
-						onChange={(event) => {
-							if (event.target.value == solfegeAnswer) {
-								event.target.value = ""
-								popStack()
-							}
-						}}
-					></TextField>
+				<Stack>
+					<Stack direction='row' justifyContent='space-around'>
+						<TextField
+							label="Enter note as solfege"
+							variant="standard"
+							style={{padding:10}}
+							onChange={(event) => {
+								if (event.target.value == solfegeAnswer) {
+									event.target.value = ""
+									popStack()
+								}
+							}}
+						></TextField>
+						<HelpOutlineIcon style={{alignSelf: 'center'}} onClick={() => handleHelpClick()}></HelpOutlineIcon>
+					</Stack>
 					<Button variant={"outlined"} onClick={() => newKeyHandler()}>New Key</Button>
+					{showHelp &&
+						 <Stack
+						 direction="column"
+						 alignItems="center"
+					 	>
+							<Box
+								component="img"
+								sx={{
+									height: 321,
+									width: 273,
+									maxHeight: { xs: 321, md: 231 },
+									maxWidth: { xs: 273, md: 195 },
+								}}
+								src={'./assets/solfege-help.png'}
+							/>
+					 	</Stack>
+					}
+				</Stack>
 				</BorderedSection>
 				<BorderedSection title="Options">
 					<Stack direction='row' justifyContent='space-around'>

@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@emotion/react';
-import { Select, Grid, MenuItem, FormControl, InputLabel, Box, Typography, createTheme } from '@mui/material';
+import { Select, MenuItem, FormControl, Grid, InputLabel, Box, Typography, createTheme } from '@mui/material';
 import * as React from 'react';
 
 export function ModeSelect({mode, handleModeChange}) {
